@@ -11,6 +11,8 @@
 					href="perros2">CRUD Perros Con JSP </a></li>
 				<li class="nav-item"><a class="nav-link text-light"
 					href="formulario-deportes.jsp">Ejemplo Checkboxes</a></li>
+				<li class="nav-item"><a class="nav-link text-light"
+					href="">Ejercicios productos</a></li> <!-- poner bien la ruta! -->
 			</ul>
 		</div>
 	</div>

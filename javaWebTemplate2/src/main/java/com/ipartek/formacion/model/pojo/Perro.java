@@ -18,9 +18,6 @@ public class Perro {
 		this();
 		this.nombre = nombre;
 	}
-	
-	
-
 
 	public Perro(int id, String nombre) {
 		this();
