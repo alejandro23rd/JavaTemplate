@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 /**
  * Servlet implementation class DeportesController
  */
@@ -36,9 +38,7 @@ public class DeportesController extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String email = request.getParameter("email");
 		String sexo = request.getParameter("sexo");
-		String deportes[] = request.getParameterValues("deportes");
-
-		
+		String deportes[] = request.getParameterValues("deportes");	
 		
 		try
 		{
@@ -55,11 +55,7 @@ public class DeportesController extends HttpServlet {
 					for (String deporteKey : deportes)
 					{
 
-						String deporteValue = hmDeportes.get(deporteKey);
-						if (deporteValue != null)
-						{
-							deportesSeleccionados.add(deporteValue);
-						}
+						deportesSeleccionados.add( hmDeportes.get(deporteKey));
 
 					}
 
@@ -76,13 +72,16 @@ public class DeportesController extends HttpServlet {
 					request.setAttribute("nombre", nombre);
 					request.setAttribute("deportesMarcados", Arrays.toString(deportes));
 					request.setAttribute("mensaje", "Selecciona almenos 3 deportes");
+					request.setAttribute("sexo", sexo);
 					request.getRequestDispatcher("formulario-deportes.jsp").forward(request, response);
 
 				}
 			}
-		}catch (Exception e)
-		{
-			LOG.error(e);
+		}catch (Exception e) {
+			//LOG.error(e);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+			
+
 		}
 	}
 }
